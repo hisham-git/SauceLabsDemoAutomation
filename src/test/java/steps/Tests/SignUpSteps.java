@@ -2,6 +2,7 @@ package steps.Tests;
 
 import java.util.Map;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
@@ -24,11 +25,11 @@ public class SignUpSteps {
 	private Header header;
 	private Login login;
 
-	public SignUpSteps() {
-		register = PageFactory.initElements(Browser.getDriver(), Register.class);
-		myAccount = PageFactory.initElements(Browser.getDriver(), MyAccount.class);
-		header = PageFactory.initElements(Browser.getDriver(), Header.class);
-		login = PageFactory.initElements(Browser.getDriver(), Login.class);
+	public SignUpSteps(WebDriver driver) {
+		register = PageFactory.initElements(driver, Register.class);
+		myAccount = PageFactory.initElements(driver, MyAccount.class);
+		header = PageFactory.initElements(driver, Header.class);
+		login = PageFactory.initElements(driver, Login.class);
 	}
 
 	public MyAccount createNewSignIn(Map<String, String> userInfo) {

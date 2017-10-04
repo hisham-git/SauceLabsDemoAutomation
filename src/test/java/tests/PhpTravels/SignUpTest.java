@@ -43,19 +43,17 @@ public class SignUpTest extends AbstractTest {
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() {
 		Log.logTestClassStart(this.getClass());
-		
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		Log.logTestClassEnd(this.getClass());
-		webDriver.get().quit();
+		Browser.quitWebDriver();
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeMethod(Method method) {
 		Log.logTestMethodStart(method);
-		steps = new SignUpSteps();
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -71,16 +69,20 @@ public class SignUpTest extends AbstractTest {
 			throws MalformedURLException, InvalidElementStateException, UnexpectedException{
 		Browser.createDriver(browser, version, os, method.getName());
 		WebDriver driver = Browser.getWebDriver();
-		
 		Nav.toURL(baseUrl + "/register", driver);
+		steps = new SignUpSteps(driver);
 		steps.createNewSignIn(testData);
 		steps.verifyUser(testData);
 	}
 
 	@Test(groups = {
 			"UpdateProfile" }, dependsOnGroups = "SignUpUser", description = "Check user profile update", dataProvider = "getExcelData", dataProviderClass = ExcelDataMapper.class)
-	public void updateProfileTest(Map<String, String> testData) {
-		Nav.toURL(baseUrl + "/login");
+	public void updateProfileTest(Map<String, String> testData, Method method) 
+			throws MalformedURLException, InvalidElementStateException, UnexpectedException{
+		Browser.createDriver(browser, version, os, method.getName());
+		WebDriver driver = Browser.getWebDriver();
+		Nav.toURL(baseUrl + "/login", driver);
+		steps = new SignUpSteps(driver);
 		steps.logIn(testData);
 		steps.selectMyProfileTab();
 		steps.updateProfileAndVerifySuccessMsg(testData, profileSuccessMsg);

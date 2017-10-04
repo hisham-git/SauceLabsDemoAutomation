@@ -94,4 +94,8 @@ public class Browser {
 		((JavascriptExecutor) webDriver.get())
 				.executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
 	}
+	
+	public static void quitWebDriver(){
+		 webDriver.get().quit();
+	}
 }
