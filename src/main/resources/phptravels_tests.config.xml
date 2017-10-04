@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:property-placeholder
+		location="classpath*:*phptravels_${envTarget}.properties" />
+
+	<bean id="urls" class="net.phptravels.tools.propertyholder.spring.URLsHolder">
+		<property name="baseUrl" value="${baseURL}" />
+		<property name="pageAdmin" value="${page.admin}" />
+		<property name="pageAccount" value="${page.account}" />
+		<property name="pageLogin" value="${page.login}" />
+	</bean>
+
+	<bean id="data" class="net.phptravels.tools.propertyholder.spring.DataHolder">
+		<property name="adminName" value="${admin.name}" />
+		<property name="adminAccountName" value="${admin.account.name}" />
+		<property name="adminAccountPassword" value="${admin.account.password}"></property>
+
+		<property name="userName" value="${user.name}"></property>
+		<property name="userAccountName" value="${user.account.name}"></property>
+		<property name="userAccountPassword" value="${user.account.password}"></property>
+
+		<property name="environmentName" value="${deployment.environment}" />
+	</bean>
+</beans>

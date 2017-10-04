@@ -1,0 +1,16 @@
+/.gradle
+/bin
+/lib
+/Pdf-output
+/target
+/test-output
+/build
+
+*.log
+*.iml
+*.ipr
+*.iws
+.idea/
+.classpath
+.project
+*.prefs

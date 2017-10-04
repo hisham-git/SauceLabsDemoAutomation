@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Demo Automation Groups Test Suite" preserve-order="true">
+	<parameter name="browser" value="chrome"></parameter>
+	<listeners>
+		<!-- <listener class-name="ru.yandex.qatools.allure.testng.AllureTestListener" />
+		<listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
+	</listeners>
+
+	<test name="demo automation Test" group-by-instances="true">
+		<groups>
+			<run>
+				<include name="SignUp" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.PhpTravels" />
+		</packages>
+	</test>
+		
+</suite> <!-- Suite -->
