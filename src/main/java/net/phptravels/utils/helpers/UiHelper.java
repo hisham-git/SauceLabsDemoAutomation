@@ -23,15 +23,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 
 import net.phptravels.ui.elements.Calendar;
 import net.phptravels.ui.elements.Control;
 import net.phptravels.ui.elements.Dropdown;
 import net.phptravels.ui.elements.Input;
 import net.phptravels.ui.elements.TextArea;
-import net.phptravels.utils.logging.Log;
 import net.phptravels.utils.browsers.Browser;
+import net.phptravels.utils.logging.Log;
 
 /**
  * Helper class, a wrapper for underlying library(ies) calls. Provides unified

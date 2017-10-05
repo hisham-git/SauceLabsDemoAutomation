@@ -26,9 +26,12 @@ public class Log extends Reporter {
 	private static String newLine = "\r\n </br>";
 	private static ExtentReports extentReport;
 	private static ExtentTest extntTest;
-	private static ThreadLocal<ExtentTest> testNode;
-	private static ThreadLocal<ExtentTest> classNode;
-    private static ThreadLocal<ExtentTest> methodNode;
+	/*private static ThreadLocal<ExtentTest> testNode
+	private static ThreadLocal<ExtentTest> classNode
+    private static ThreadLocal<ExtentTest> methodNode*/
+	private static ThreadLocal<ExtentTest> testNode = new ThreadLocal<ExtentTest>();;
+	private static ThreadLocal<ExtentTest> classNode = new ThreadLocal<ExtentTest>();;
+    private static ThreadLocal<ExtentTest> methodNode = new ThreadLocal<ExtentTest>();;
 	
 	/**
 	 * 'extentreports', version:'2.41.1'
@@ -255,7 +258,7 @@ public class Log extends Reporter {
 	public static void logTestStart(ITestContext testContext) {
 		logMessage("<+> <+> <+> <+> <+> <+> <+> <+> <+> <+> <Starting new Test '" + testContext.getName()
 				+ "'> <+> <+> <+> <+> <+> <+> <+> <+> <+> <+>");
-		testNode = new ThreadLocal<ExtentTest>();
+//		testNode = new ThreadLocal<ExtentTest>();
 		extntTest = extentReport.createTest(testContext.getCurrentXmlTest().getName());
 		testNode.set(extntTest);
 	}
@@ -277,7 +280,7 @@ public class Log extends Reporter {
 	public static void logTestClassStart(Class<?> cls) {
 		logMessage("{+} {+} {+} {+} {+} {+} {+} {+} {+} {+} {Starting new Test Class '" + cls.getSimpleName()
 				+ "'} {+} {+} {+} {+} {+} {+} {+} {+} {+} {+}");
-		classNode = new ThreadLocal<ExtentTest>();
+//		classNode = new ThreadLocal<ExtentTest>();
 		try {
 			extntTest = testNode.get().createNode(cls.getSimpleName());	
 		} catch (NullPointerException e) {
@@ -313,7 +316,7 @@ public class Log extends Reporter {
      */
     public static void logTestMethodStart(Method method){
     	logMessage("(+) (+) (+) (+) (+) (Starting new Test Method '"+ method.getName() +"') (+) (+) (+) (+) (+)");
-    	methodNode = new ThreadLocal<ExtentTest>();
+//    	methodNode = new ThreadLocal<ExtentTest>();
     	extntTest = classNode.get().createNode(method.getName());
 		methodNode.set(extntTest);
     }

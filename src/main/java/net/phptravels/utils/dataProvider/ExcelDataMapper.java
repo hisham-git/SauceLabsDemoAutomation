@@ -24,7 +24,7 @@ public class ExcelDataMapper {
 		System.out.println();
 	}
 	
-	@DataProvider
+	@DataProvider(parallel = false)
 	public static Iterator<Object[]> getExcelData(Method callingMethod) throws IOException {
 		FileInputStream sourceFile = null;
 		Workbook workbook = null;

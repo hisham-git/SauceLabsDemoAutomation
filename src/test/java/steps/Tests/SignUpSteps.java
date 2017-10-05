@@ -57,9 +57,10 @@ public class SignUpSteps {
 	}
 
 	public Login logOut() {
-		Actions cursor = new Actions(Browser.getDriver());
+//		Actions cursor = new Actions(Browser.getDriver());
 		UiHelper.click(header.getUserControlMenu());
-		cursor.moveToElement(header.getLogoutOption()).click().perform();
+		UiHelper.click(header.getLogoutOption());
+//		cursor.moveToElement(header.getLogoutOption()).click().perform();
 		login = PageFactory.initElements(Browser.getDriver(), Login.class);
 		UiHelper.fluentWaitForElementClickability(login.getLoginBtn(), 30);
 		return login;

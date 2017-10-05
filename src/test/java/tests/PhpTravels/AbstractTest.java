@@ -55,7 +55,7 @@ public abstract class AbstractTest {
      * @param testMethod
      * @return Two dimensional array of objects with browser, version, and platform information
      */
-    @DataProvider(name = "hardCodedBrowsers")
+    @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
                 /*new Object[]{"MicrosoftEdge", "14.14393", "Windows 10"},
@@ -64,13 +64,11 @@ public abstract class AbstractTest {
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "54.0", "OS X 10.10"},
                 new Object[]{"firefox", "latest-1", "Windows 7"},*/
-                
-                new Object[]{"chrome", "60.0", "Windows 10"},
         };
     }
     
     protected void annotate(String text) {
-        ((JavascriptExecutor) Browser.getWebDriver()).executeScript("sauce:context=" + text);
+        ((JavascriptExecutor) Browser.getDriver()).executeScript("sauce:context=" + text);
     }
 
 	/**

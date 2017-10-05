@@ -42,9 +42,9 @@ public class Browser {
 	 /**
      * @return the {@link WebDriver} for the current thread
      */
-    public static WebDriver getWebDriver() {
-        return webDriver.get();
-    }
+	public static WebDriver getDriver() {
+		return webDriver.get();
+	}
 
     /**
      *
@@ -86,7 +86,7 @@ public class Browser {
                 capabilities));
 
         // set current sessionId
-        String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+        String id = ((RemoteWebDriver) getDriver()).getSessionId().toString();
         sessionId.set(id);
     }
     
@@ -95,7 +95,16 @@ public class Browser {
 				.executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
 	}
 	
-	public static void quitWebDriver(){
-		 webDriver.get().quit();
+	public static void quitDriver(){
+		getDriver().quit();
 	}
+	
+	 /**
+     * Gets URL of the current page.
+     *
+     * @return URL of the current page.
+     */
+    public static String getCurrentUrl(){
+        return getDriver().getCurrentUrl();
+    }
 }

@@ -40,9 +40,9 @@ dependencies {
 task runFrontend( type: Test ) {
 	useTestNG() {
 		systemProperty 'envTarget', 'frontend'
-		systemProperty 'BUILD_TAG', '1.0.1'
-		systemProperty 'SAUCE_USERNAME', 'his08'
-		systemProperty 'SAUCE_ACCESS_KEY', '07079f3a-a7ac-4c67-8c86-79d0aa572328'
+		environment 'BUILD_TAG', '1.0.1'
+		environment 'SAUCE_USERNAME', 'his08'
+		environment 'SAUCE_ACCESS_KEY', '07079f3a-a7ac-4c67-8c86-79d0aa572328'
   		options.suites("AutomationDemo.xml")
   		preserveOrder = true
   	}
